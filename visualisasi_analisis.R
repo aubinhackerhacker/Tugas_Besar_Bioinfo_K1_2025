@@ -1,12 +1,12 @@
-# Analisis awal (konfirmasi keberadaan gen signifikan)
+#Analisis awal (konfirmasi keberadaan gen signifikan)
 setwd("C:/Users/firda/Downloads/gawe_tubes/")
 hasil_kegg <- read.csv("./proteins_KEGG_enrichment.csv")
 gene_map <- read.csv("./genemapped.csv")
 
-# menggabungkan hasil gene_map dengan kegg berdasarkan protein.id
+#menggabungkan hasil gene_map dengan kegg berdasarkan protein.id
 merged_data <- merge(hasil_kegg, gene_map, by = "Protein.Id", all.x = TRUE)
 
-# konfirmasi keberhasilan hasil merge
+#konfirmasi keberhasilan hasil merge
 head(merged_data)
 
 
@@ -14,8 +14,8 @@ head(merged_data)
 library(tidyverse)
 "dplyr" %in% .packages()
 
-#konfirmgasi protein signifikan
-# Daftar gen yang berkaitan dengan penyakit NASH
+### konfirmasi protein signifikan
+#Daftar gen yang berkaitan dengan penyakit NASH
 daftar_gen_nash <- c("Srebf1", "Ppara", "Pparg", "Tnfa", "Tgfbr2", "Mapk8", 
                     "Nfkb1", "Pik3r1", "Akt1", "Mtor", "Rxra", "Fasn", "Prkaa1")
 
@@ -29,12 +29,10 @@ print(protein_nash[, c("Protein.Name.x", "Gene.x", "Pathway_Name")])
 
 
 ### RANK protein
-
 #Loading package yang digunakan 
 library(STRINGdb)
 library(igraph)
 library(tidyverse)
-
 
 #filtering spesifik menggunakan package dplyr
 protein_nash <- merged_data %>%
@@ -64,15 +62,14 @@ print("10 Teratas protein NASH dengan interaksi tertinggi")
 print(head(centrality_scores, 10))
 
 
-#KEGG PATHWAY
-
+### KEGG PATHWAY
 #loading package yang akan digunakan 
 library(clusterProfiler)
 library(org.Mm.eg.db) # database mouse
 library(ggplot2)
 
 
-# Pencarian protein unik pada data NASH yang sudah dibuat sebelumnya
+#Pencarian protein unik pada data NASH yang sudah dibuat sebelumnya
 gen_terkait_nash <- merged_data %>%
   filter(Gene.x %in% daftar_gen_nash) %>%
   pull(Gene.x) %>% # Dijadikan vektor
@@ -81,31 +78,30 @@ gen_terkait_nash <- merged_data %>%
 #Analisis KEGG
 entrez_ids <- bitr(gen_terkait_nash, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Mm.eg.db")
 
-# enrichment analysis
+#enrichment analysis
 hasil_enrichment <- enrichKEGG(
   gene = entrez_ids$ENTREZID,
   organism = 'mmu', # 'mmu' adalah kode mouse
   pvalueCutoff = 0.05
 )
 
-# visualisasi barplot
+#visualisasi barplot
 barplot(hasil_enrichment, showCategory = 15) +
   labs(title = "Pathway KEGG yang berkaitan dengan protein NASH")
 
 
-# PPI
+##PPI (Protein-Protein Interaction)
 
-# Loading package yang digunakna 
+#Loading package yang digunakan 
   library(STRINGdb)
   
-# Pendefinisian stringdb
+#Pendefinisian stringdb
 string_db <- STRINGdb$new(
   version = "12.0",
   species = 10090,  # CRITICAL FIX: 10090 is for Mus musculus (mouse)
   score_threshold = 400, # A medium confidence score
   network_type = "full"
 )
-
 
 #filtering protein
 protein_nash <- merged_data %>%
