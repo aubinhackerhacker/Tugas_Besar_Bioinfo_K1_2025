@@ -4,8 +4,8 @@ Pipeline dan Script R yang digunakan selama analisis
 Pipeline:
 (gambar)
 
-Link file yang diunduh untuk dianalisis: https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD053187-1&test=no
-Hasil konversi file .raw ke .mzML: https://drive.google.com/file/d/1oLDz1K8t4GVEupaW7jI3y2i4RyAZ86KE/view?usp=sharing
+- Link file yang diunduh untuk dianalisis: https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD053187-1&test=no
+- Hasil konversi file .raw ke .mzML: https://drive.google.com/file/d/1oLDz1K8t4GVEupaW7jI3y2i4RyAZ86KE/view?usp=sharing
 
 Repository ini terdiri dari 4 file
 1. genemapped.csv (output dari _step_ 4)
