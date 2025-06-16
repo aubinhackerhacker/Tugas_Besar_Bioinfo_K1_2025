@@ -1,4 +1,4 @@
-# Tugas_Besar_Bioinfo_K1_2025
+# Tugas Besar Bioinformatika K1 2025
 Pipeline dan Script R yang digunakan selama analisis
 
 Pipeline:
