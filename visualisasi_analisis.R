@@ -1,4 +1,5 @@
-#Analisis awal (konfirmasi keberadaan gen signifikan)
+##Analisis awal (konfirmasi keberadaan gen signifikan)
+#set directory
 hasil_kegg <- read.csv("./proteins_KEGG_enrichment.csv")
 gene_map <- read.csv("./genemapped.csv")
 
