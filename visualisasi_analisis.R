@@ -1,5 +1,4 @@
 #Analisis awal (konfirmasi keberadaan gen signifikan)
-setwd("C:/Users/firda/Downloads/gawe_tubes/")
 hasil_kegg <- read.csv("./proteins_KEGG_enrichment.csv")
 gene_map <- read.csv("./genemapped.csv")
 
