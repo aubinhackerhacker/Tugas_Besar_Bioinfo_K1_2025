@@ -2,7 +2,7 @@
 Pipeline dan Script R yang digunakan selama analisis
 
 Pipeline:
-![image](https://github.com/user-attachments/assets/5b8b1dbb-4832-4056-b7a6-b56b4175a69c)
+![image](https://github.com/user-attachments/assets/a226b63f-f0cd-455a-be8b-967c3eb1b58a)
 
 - Link file yang diunduh untuk dianalisis: https://proteomecentral.proteomexchange.org/cgi/GetDataset?ID=PXD053187-1&test=no
 - Hasil konversi file .raw ke .mzML: https://drive.google.com/file/d/1oLDz1K8t4GVEupaW7jI3y2i4RyAZ86KE/view?usp=sharing
